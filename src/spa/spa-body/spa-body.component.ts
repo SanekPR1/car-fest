@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-spa-body',
+  selector: 'spa-body',
   templateUrl: './spa-body.component.html',
   styleUrls: ['./spa-body.component.css']
 })
