@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spa-footer.component.css']
 })
 export class SpaFooterComponent implements OnInit {
+  title: string = "All rights reserved";
+  year: number = new Date().getFullYear();
 
   constructor() { }
 
