@@ -4,6 +4,7 @@ import { SpaBodyComponent } from './spa-body/spa-body.component';
 import { SpaHeaderComponent } from './spa-header/spa-header.component';
 import { SpaContentComponent } from './spa-content/spa-content.component';
 import { SpaFooterComponent } from './spa-footer/spa-footer.component';
+import { SpaConfigService } from './services/spa-config.service';
 
 @NgModule({
     imports: [CommonModule],
@@ -13,6 +14,7 @@ import { SpaFooterComponent } from './spa-footer/spa-footer.component';
         SpaContentComponent,
         SpaFooterComponent
     ],
-    exports: [SpaBodyComponent]
+    exports: [SpaBodyComponent],
+    providers: [SpaConfigService]
 })
 export class SpaModule { }
