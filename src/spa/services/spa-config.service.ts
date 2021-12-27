@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 export class SpaConfigService {
     showUserControls: boolean = true;
     socialIcons = new Array<Icons>();
+    //this method will assign settings to the object on what it'll be applied => as an example AppModule
     configure(settings: SpaConfigSettings): void {
         Object.assign(this, settings);
     }
