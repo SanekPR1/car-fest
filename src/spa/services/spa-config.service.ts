@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 export class SpaConfigService {
     showUserControls: boolean = true;
     socialIcons = new Array<Icons>();
-    configure(settings: Settings): void {
+    configure(settings: SpaConfigSettings): void {
         Object.assign(this, settings);
     }
 }
@@ -15,7 +15,7 @@ export interface Icons {
     alt: string;
 }
 
-export interface Settings {
+export interface SpaConfigSettings {
     showUserControls?: boolean;
     socialIcons?: Array<Icons>;
 }
