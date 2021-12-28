@@ -6,6 +6,7 @@ import { SpaContentComponent } from './spa-content/spa-content.component';
 import { SpaFooterComponent } from './spa-footer/spa-footer.component';
 import { SpaConfigService } from './services/spa-config.service';
 import { IconBarComponent } from './icon-bar/icon-bar.component';
+import { ScreenService } from './services/screen.service';
 
 @NgModule({
     imports: [CommonModule],
@@ -17,6 +18,6 @@ import { IconBarComponent } from './icon-bar/icon-bar.component';
         IconBarComponent
     ],
     exports: [SpaBodyComponent],
-    providers: [SpaConfigService]
+    providers: [SpaConfigService, ScreenService]
 })
 export class SpaModule { }
