@@ -17,6 +17,9 @@ export class ScreenService {
             window.addEventListener('resize', (event) => this.onResize(event));
         } catch (e) {
             console.error(e);
+        } finally {
+            this.screenWidth = 0;
+            this.screenHeight = 0;
         }
     }
 
