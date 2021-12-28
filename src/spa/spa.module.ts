@@ -7,6 +7,8 @@ import { SpaFooterComponent } from './spa-footer/spa-footer.component';
 import { SpaConfigService } from './services/spa-config.service';
 import { IconBarComponent } from './icon-bar/icon-bar.component';
 import { ScreenService } from './services/screen.service';
+import { ScreenSmallDirective } from './directives/screen-small.directives';
+import { ScreenLargeDirective } from './directives/screen-large.directives';
 
 @NgModule({
     imports: [CommonModule],
@@ -15,7 +17,9 @@ import { ScreenService } from './services/screen.service';
         SpaHeaderComponent,
         SpaContentComponent,
         SpaFooterComponent,
-        IconBarComponent
+        IconBarComponent,
+        ScreenSmallDirective,
+        ScreenLargeDirective
     ],
     exports: [SpaBodyComponent],
     providers: [SpaConfigService, ScreenService]
