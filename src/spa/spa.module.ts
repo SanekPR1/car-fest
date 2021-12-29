@@ -9,6 +9,7 @@ import { IconBarComponent } from './icon-bar/icon-bar.component';
 import { ScreenService } from './services/screen.service';
 import { ScreenSmallDirective } from './directives/screen-small.directives';
 import { ScreenLargeDirective } from './directives/screen-large.directives';
+import { MenuService } from './services/menu.service';
 
 @NgModule({
     imports: [CommonModule],
@@ -22,6 +23,6 @@ import { ScreenLargeDirective } from './directives/screen-large.directives';
         ScreenLargeDirective
     ],
     exports: [SpaBodyComponent],
-    providers: [SpaConfigService, ScreenService]
+    providers: [SpaConfigService, ScreenService, MenuService]
 })
 export class SpaModule { }
