@@ -6,3 +6,8 @@
    overflow-y: auto;
    height: 100vh;
 }
+
+.body-style {
+   padding: 22px;
+   flex-grow: 1;
+}
