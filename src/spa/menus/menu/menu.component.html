@@ -1,1 +1,7 @@
-<p>menu works!</p>
+<nav>
+    <ul>
+        <li *ngFor="let item of menuService.items">
+            <spa-menu-item [item]='item' [ngClass]="{'vertical-menu': menuService.isVertical}"></spa-menu-item>
+        </li>
+    </ul>
+</nav>
