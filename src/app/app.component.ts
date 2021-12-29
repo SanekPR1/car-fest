@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MenuService } from 'src/spa/services/menu.service';
 import { SpaConfigService, SpaConfigSettings, Icons } from 'src/spa/services/spa-config.service';
+import { AppMenuItems } from './app.menu';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,8 @@ import { SpaConfigService, SpaConfigSettings, Icons } from 'src/spa/services/spa
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private spaConfigService: SpaConfigService) {
+  constructor(private spaConfigService: SpaConfigService,
+    private menuService: MenuService) {
     const config: SpaConfigSettings = {
       socialIcons: [
         { imageFile: 'imgs/facebook.png', alt: 'Facebook', url: "https://facebook.com" },
@@ -18,5 +21,6 @@ export class AppComponent {
       showUserControls: true
     };
     spaConfigService.configure(config);
+    menuService.items = AppMenuItems;
   }
 }
