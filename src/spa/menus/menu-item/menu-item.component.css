@@ -54,3 +54,9 @@
     font-size: 12px;
     padding: 3px 15px 3px 8px;
 }
+
+
+.active {
+    outline: none;
+    background-color: rgba(247, 58, 58, 0.8);
+}
