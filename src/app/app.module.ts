@@ -4,9 +4,9 @@ import { SpaModule } from 'src/spa/spa.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppHomeComponent } from './app-home/app-home.component';
-import { CarsComponent } from './cars/cars.component';
-import { SettingsComponent } from './settings/settings.component';
+import { AppHomeComponent } from './routes/app-home/app-home.component';
+import { CarsComponent } from './routes/cars/cars.component';
+import { SettingsComponent } from './routes/settings/settings.component';
 
 @NgModule({
   declarations: [
