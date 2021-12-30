@@ -16,10 +16,9 @@ export class ScreenService {
             this.screenHeight = window.innerHeight;
             window.addEventListener('resize', (event) => this.onResize(event));
         } catch (e) {
-            console.error(e);
-        } finally {
             this.screenWidth = 0;
             this.screenHeight = 0;
+            console.error(e);
         }
     }
 
