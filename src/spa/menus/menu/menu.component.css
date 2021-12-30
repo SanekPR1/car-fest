@@ -14,3 +14,15 @@ ul {
 li {
     display: inline;
 }
+
+:host(.vertical-menu) {
+     display: inline-block;
+     max-width: 160px;
+     min-width: 160px;
+     height: 100vh;
+     padding-left: 4px;
+     flex-grow: 0;
+     background-color: rgb(53, 133, 138);
+     overflow-x: hidden;
+     overflow-y: auto;
+}

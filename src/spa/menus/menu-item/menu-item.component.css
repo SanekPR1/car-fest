@@ -38,3 +38,19 @@
     margin-left: 16px;
     width: auto;
 }
+
+:host(.vertical-menu) {
+    display: block;
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+:host(div.vertical-menu) {
+    font-size: 10px;
+}
+
+:host(.vertical-menu .menu-item) {
+    font-size: 12px;
+    padding: 3px 15px 3px 8px;
+}
