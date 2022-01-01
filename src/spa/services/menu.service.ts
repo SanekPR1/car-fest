@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class MenuService {
-    items: Array<MenuItem> = new Array();
+    items: Array<MenuItem>;
     isVertical: boolean = false;
     showVerticalMenu: boolean = false;
 
