@@ -78,14 +78,14 @@ export class MenuItemComponent implements OnInit {
   @HostListener('click', ['$event'])
   onClick(event: Event): void {
     event.stopPropagation();
-    if (this.item.subMenu) {
+    if (this.item.subMenu != null) {
       if (this.menuService.isVertical) {
         this.mouseInPopup = !this.mouseInPopup;
-      } else if (this.item.route) {
-        const newEvent = new MouseEvent('mouseleave', { bubbles: true });
-        (this.el.nativeElement as any)['dispatchEvent'].apply(this.el.nativeElement, [newEvent]);
-        this.router.navigate([this.item.route]);
       }
+    } else if (this.item.route) {
+      const newEvent = new MouseEvent('mouseleave', { bubbles: true });
+      (this.el.nativeElement as any)['dispatchEvent'].apply(this.el.nativeElement, [newEvent]);
+      this.router.navigate([this.item.route]);
     }
   }
 }
