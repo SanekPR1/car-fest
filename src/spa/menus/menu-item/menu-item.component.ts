@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MenuItem, MenuService } from 'src/spa/services/menu.service';
 
@@ -11,6 +11,15 @@ export class MenuItemComponent implements OnInit {
 
   @Input()
   item!: MenuItem;
+  @HostBinding('class.parent-for-popup')
+  @Input()
+  parentIsPopup = true;
+
+  mouseInPopup = false;
+  mouseInItem = false;
+
+  popupLeft = 0;
+  popupTop = 42;
 
   isActiveRoute = false;
 
@@ -32,5 +41,37 @@ export class MenuItemComponent implements OnInit {
 
   checkingActiveRoute(route: String): void {
     this.isActiveRoute = route === this.item.route;
+  }
+
+  onPopupMouseLeave(event: Event): void {
+    if (!this.menuService.isVertical) {
+      this.mouseInPopup = false;
+    }
+  }
+
+  onPopupMouseEnter(event: Event): void {
+    if (!this.menuService.isVertical) {
+      this.mouseInPopup = true;
+    }
+  }
+
+  @HostListener('mouseleave', ['$event'])
+  onMouseLeave(event: Event): void {
+    if (!this.menuService.isVertical) {
+      this.mouseInItem = false;
+    }
+  }
+
+  @HostListener('mouseenter')
+  onMouseEnter(): void {
+    if (!this.menuService.isVertical) {
+      if (this.item.subMenu) {
+        this.mouseInItem = true;
+        if (this.parentIsPopup) {
+          this.popupLeft = 160;
+          this.popupTop = 0;
+        }
+      }
+    }
   }
 }

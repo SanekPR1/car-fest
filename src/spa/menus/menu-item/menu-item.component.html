@@ -4,6 +4,18 @@
         <img [src]='item.icon'>
     </span>
     <span>{{item.text}}</span>
+    <span *ngIf="item.subMenu && !menuService.isVertical">
+        <span [ngClass]='parentIsPopup ? "dropend" : "dropdown"'>
+            <button class="dropdown-toggle"></button>
+        </span>
+    </span>
+    <span *ngIf="item.subMenu && menuService.isVertical">
+        <span [ngClass]='(mouseInItem || mouseInPopup) ? "dropstart" : "dropdown"'>
+            <button class="dropdown-toggle"></button>
+        </span>
+    </span>
 </div>
-<spa-popup-menu [menu]='item.subMenu' [ngClass]='{"vertical-menu" : menuService.isVertical}'>
+<spa-popup-menu *ngIf="mouseInPopup || mouseInItem" [menu]='item.subMenu'
+    [ngClass]='{"vertical-menu" : menuService.isVertical}' [style.left]='popupLeft+"px"' [style.top]='popupTop+"px"'
+    (mouseleave)='onPopupMouseLeave($event)' (mouseenter)='onPopupMouseEnter($event)'>
 </spa-popup-menu>
