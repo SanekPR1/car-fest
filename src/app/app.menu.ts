@@ -5,15 +5,15 @@ export const AppMenuItems: Array<MenuItem> = [
         text: 'Cars', icon: 'imgs/car.png', route: '/cars', subMenu: [
             {
                 text: 'Select', icon: 'imgs/car.png', route: null, subMenu: [
-                    { text: 'Audi', icon: 'imgs/car.png', route: '/ferrari', subMenu: null },
-                    { text: 'BMW', icon: 'imgs/car.png', route: '/bmw', subMenu: null },
-                    { text: 'Fiat', icon: 'imgs/car.png', route: '/fiat', subMenu: null },
-                    { text: 'Ford', icon: 'imgs/car.png', route: '/ford', subMenu: null }
+                    { text: 'Audi', icon: 'imgs/car.png', route: '/car-detail/audi', subMenu: null },
+                    { text: 'BMW', icon: 'imgs/car.png', route: '/car-detail/bmw', subMenu: null },
+                    { text: 'Fiat', icon: 'imgs/car.png', route: '/car-detail/fiat', subMenu: null },
+                    { text: 'Ford', icon: 'imgs/car.png', route: '/car-detail/ford', subMenu: null }
                 ]
             },
-            { text: 'Pric top', icon: 'imgs/car.png', route: '/1', subMenu: null },
-            { text: 'Top 3', icon: 'imgs/car.png', route: '/3', subMenu: null },
-            { text: 'Top 5', icon: 'imgs/car.png', route: '/5', subMenu: null }
+            { text: 'Pric top', icon: 'imgs/car.png', route: '/car-list/1', subMenu: null },
+            { text: 'Top 3', icon: 'imgs/car.png', route: '/car-list/3', subMenu: null },
+            { text: 'Top 5', icon: 'imgs/car.png', route: '/car-list/5', subMenu: null }
         ]
     },
     {
