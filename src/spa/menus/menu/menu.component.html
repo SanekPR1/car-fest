@@ -5,3 +5,7 @@
         </li>
     </ul>
 </nav>
+<div [ngClass]='menuService.isVertical ? "dropup" : "dropstart"'>
+    <button class="btn btn-default btn-sm dropdown-toggle" *ngIf="!menuService.showVerticalMenu"
+        [ngClass]='{"horizontal" : !menuService.isVertical}' (click)='menuService.toggleOrientation()'></button>
+</div>

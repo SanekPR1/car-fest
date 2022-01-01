@@ -31,3 +31,12 @@ li {
     width: 14px;
     height: 14px;
 }
+
+div button {
+    background-color: rgb(225, 224, 243)
+}
+
+button.horizontal {
+    margin-left: 20px;
+    margin-bottom: 7px;
+} 
