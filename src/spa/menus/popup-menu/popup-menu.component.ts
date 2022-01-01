@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuService, MenuItem } from 'src/spa/services/menu.service';
 
 @Component({
@@ -8,7 +8,10 @@ import { MenuService, MenuItem } from 'src/spa/services/menu.service';
 })
 export class PopupMenuComponent implements OnInit {
 
-  constructor(private menuService: MenuService) { }
+  @Input()
+  menu: Array<MenuItem>;
+
+  constructor(public menuService: MenuService) { }
 
   ngOnInit(): void {
   }

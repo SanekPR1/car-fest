@@ -1,1 +1,4 @@
-<p>popup-menu works!</p>
+<li *ngFor="let item of menu">
+    <spa-menu-item [item]='item' class="in-popup" [ngClass]='{"vertical-menu" : menuService.isVertical}'>
+    </spa-menu-item>
+</li>
