@@ -1,5 +1,5 @@
-<div class="menu-item" [ngClass]="{'vertical-menu': menuService.isVertical}" [routerLink]="item.route"
-    routerLinkActive="active" (click)="menuService.showVerticalMenu = false">
+<div class="menu-item" [ngClass]="{'vertical-menu': menuService.isVertical, 'active': isActiveRoute}"
+    [routerLink]="item.route">
     <span class="icon">
         <img [src]='item.icon'>
     </span>
