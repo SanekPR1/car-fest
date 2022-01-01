@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHomeComponent } from './routes/app-home/app-home.component';
 import { appRoutes } from './routes/app.routes';
-import { CarsComponent } from './routes/cars/cars.component';
 import { SettingsComponent } from './routes/settings/settings.component';
 import { CarDetailComponent } from './routes/car-detail/car-detail.component';
 import { CarListComponent } from './routes/car-list/car-list.component';
@@ -17,7 +16,6 @@ import { CarMaintComponent } from './routes/car-maint/car-maint.component';
   declarations: [
     AppComponent,
     AppHomeComponent,
-    CarsComponent,
     SettingsComponent,
     CarDetailComponent,
     CarListComponent,
