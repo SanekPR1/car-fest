@@ -2,9 +2,9 @@
     <h4>Sign in</h4>
     <form novalidate (ngSubmit)="onSubmit(signInForm)" #signInForm='ngForm'>
         <div class="form-group">
-            <input type="text" autocomlete="off" name="username" required placeholder="User name" ngModel
-                #username='ngModel' class='form-control'>
-            <div class="alert alert-danger" [hidden]='username.valid || username.pristine'>Please enter your name</div>
+            <input type="text" autocomlete="off" name="email" required placeholder="User email" ngModel #email='ngModel'
+                class='form-control'>
+            <div class="alert alert-danger" [hidden]='email.valid || email.pristine'>Please enter your email</div>
         </div>
         <div class="form-group">
             <input type="password" autocomlete="off" name="password" required placeholder="Password" ngModel
