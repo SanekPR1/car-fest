@@ -14,6 +14,7 @@ import { CarMaintComponent } from './routes/car-maint/car-maint.component';
 import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
 import { UserService } from './services/user.service';
 import { UserApi } from 'src/spa/users/users-api';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { UserApi } from 'src/spa/users/users-api';
   providers: [
     UserService,
     // to make UserService available in SPA module and its component
-    { provide: UserApi, useExisting: UserService }],
+    { provide: UserApi, useExisting: UserService },
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
