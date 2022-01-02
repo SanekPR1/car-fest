@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { UserApi } from '../users-api';
 
 @Component({
@@ -11,10 +13,30 @@ export class SignInComponent implements OnInit {
   submitting = false;
   formError: string;
 
-  constructor(private userApi: UserApi) { }
+  constructor(
+    private userApi: UserApi,
+    private userService: UserService,
+    private router: Router) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form: Form) { }
+  onSubmit(signInForm: NgForm): void {
+    if (signInForm.valid) {
+      this.submitting = true;
+      this.formError = null;
+      this.userApi
+        .signIn(signInForm.value.email, signInForm.value.password)
+        .subscribe((data) => {
+          console.log(data);
+          this.router.navigate(['/authenticated']);
+        },
+          (error) => {
+            this.submitting = false;
+            this.formError = error;
+          });
+    }
+  }
 }
