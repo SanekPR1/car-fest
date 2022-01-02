@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'spa-sign-in',
@@ -14,5 +15,5 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() { }
+  onSubmit(form: Form) { }
 }

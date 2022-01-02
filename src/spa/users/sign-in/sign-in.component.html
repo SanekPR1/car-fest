@@ -1,6 +1,6 @@
 <div class="sign-in-form">
     <h4>Sign in</h4>
-    <form novalidate (ngSubmit)="onSubmit()" #signInForm='ngForm'>
+    <form novalidate (ngSubmit)="onSubmit(signInForm)" #signInForm='ngForm'>
         <div class="form-group">
             <input type="text" autocomlete="off" name="username" required placeholder="User name" ngModel
                 #username='ngModel' class='form-control'>
