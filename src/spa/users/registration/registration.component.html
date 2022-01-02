@@ -1,1 +1,33 @@
-<p>registration works!</p>
+<div class="register-form">
+    <h4>Register for new account</h4>
+    <form novalidate (ngSubmit)="onSubmit(registerForm)" #registerForm='ngForm'>
+        <div class="form-group">
+            <input type="text" autocomlete="off" name="name" required placeholder="User name" ngModel #name='ngModel'
+                class='form-control'>
+            <div class="alert alert-danger" [hidden]='name.valid || name.pristine'>Please enter your name</div>
+        </div>
+        <div class="form-group">
+            <input type="email" autocomlete="off" name="email" required placeholder="User email" ngModel
+                #email='ngModel' class='form-control'>
+            <div class="alert alert-danger" [hidden]='email.valid || email.pristine'>Please enter your email</div>
+        </div>
+        <div><input type="password" autocomlete="off" name="password" required placeholder="Password" ngModel
+                #password='ngModel' class='form-control'>
+            <div class="alert alert-danger" [hidden]='password.valid || password.pristine'>Password is required</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="formError">{{formError}}</div>
+        <div *ngIf="!regestering && !hasAdded">
+            <button routerLink="/sign-in" class="btn btn-danger">Cancel</button>
+            <button [disabled]='registerForm.invalid' type="submit" class="btn btn-success">Sign in</button>
+        </div>
+        <div *ngIf="regestering && !hasAdded">
+            <span>Regestering new user...</span>
+            <span>
+                <img src="imgs/loaderIn.gif">
+            </span>
+        </div>
+        <div *ngIf="hasAdded">
+            <span>New user has edded to database</span>
+        </div>
+    </form>
+</div>
