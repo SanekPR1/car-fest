@@ -13,6 +13,7 @@ import { CarListComponent } from './routes/car-list/car-list.component';
 import { CarMaintComponent } from './routes/car-maint/car-maint.component';
 import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
 import { UserService } from './services/user.service';
+import { UserApi } from 'src/spa/users/users-api';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,10 @@ import { UserService } from './services/user.service';
     SpaModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    // to make UserService available in SPA module and its component
+    { provide: UserApi, useExisting: UserService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

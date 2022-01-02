@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
+import { UserApi } from '../users-api';
 
 @Component({
   selector: 'spa-sign-in',
@@ -10,7 +11,7 @@ export class SignInComponent implements OnInit {
   submitting = false;
   formError: string;
 
-  constructor() { }
+  constructor(private userApi: UserApi) { }
 
   ngOnInit(): void {
   }
