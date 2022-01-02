@@ -24,3 +24,7 @@ button.btn-primary {
 span>img {
     margin-left: 5% ;
 }
+
+.form-group {
+    margin-bottom: 1rem;
+}

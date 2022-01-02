@@ -29,3 +29,7 @@ span>img, .message, button[type=submit]  {
 .message {
     margin-right: 5%;
 }
+
+.form-group {
+    margin-bottom: 1rem;
+}
