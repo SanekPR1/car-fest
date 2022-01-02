@@ -14,6 +14,8 @@ import { MenuComponent } from './menus/menu/menu.component';
 import { MenuItemComponent } from './menus/menu-item/menu-item.component';
 import { RouterModule } from '@angular/router';
 import { PopupMenuComponent } from './menus/popup-menu/popup-menu.component';
+import { RegistrationComponent } from './users/registration/registration.component';
+import { SignInComponent } from './users/sign-in/sign-in.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule],
@@ -27,7 +29,9 @@ import { PopupMenuComponent } from './menus/popup-menu/popup-menu.component';
         ScreenLargeDirective,
         MenuComponent,
         MenuItemComponent,
-        PopupMenuComponent
+        PopupMenuComponent,
+        RegistrationComponent,
+        SignInComponent
     ],
     exports: [SpaBodyComponent],
     providers: [SpaConfigService, ScreenService, MenuService]
