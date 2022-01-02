@@ -16,9 +16,10 @@ import { RouterModule } from '@angular/router';
 import { PopupMenuComponent } from './menus/popup-menu/popup-menu.component';
 import { RegistrationComponent } from './users/registration/registration.component';
 import { SignInComponent } from './users/sign-in/sign-in.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule, FormsModule],
     declarations: [
         SpaBodyComponent,
         SpaHeaderComponent,
