@@ -7,7 +7,7 @@ import { StringMap } from "@angular/compiler/src/compiler_facade_interface";
 
 @Injectable()
 export class UserService implements UserApi {
-    isAuthenticated = true;
+    isAuthenticated = false;
 
     constructor(private router: Router) { }
 
