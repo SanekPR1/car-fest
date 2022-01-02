@@ -12,6 +12,7 @@ import { CarDetailComponent } from './routes/car-detail/car-detail.component';
 import { CarListComponent } from './routes/car-list/car-list.component';
 import { CarMaintComponent } from './routes/car-maint/car-maint.component';
 import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AuthenticatedComponent } from './routes/authenticated/authenticated.com
     SpaModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
