@@ -1,1 +1,25 @@
-<p>sign-in works!</p>
+<div class="sign-in-form">
+    <h4>Sign in</h4>
+    <form novalidate (ngSubmit)="onSubmit()" #signInForm='ngForm'>
+        <div class="form-group">
+            <input type="text" autocomlete="off" name="username" required placeholder="User name" ngModel
+                #username='ngModel' class='form-control'>
+            <div class="alert alert-danger" [hidden]='username.valid || username.pristine'>Please enter your name</div>
+        </div>
+        <div><input type="password" autocomlete="off" name="password" required ngModel #password='ngModel'
+                class='form-control'>
+            <div class="alert alert-danger" [hidden]='password.valid || password.pristine'>Password is required</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="formError">{{formError}}</div>
+        <div *ngIf="!submitting">
+            <button routerLink="/register" class="btn btn-success">Register</button>
+            <button [disabled]='signInForm.invalid' type="submit" class="btn btn-success">Sign in</button>
+        </div>
+        <div *ngIf="submitting">
+            <span>
+                <img src="imgs/loaderIn.gif">
+                <span>Signing in...</span>
+            </span>
+        </div>
+    </form>
+</div>
