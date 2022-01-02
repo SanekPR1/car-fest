@@ -11,6 +11,7 @@ import { SettingsComponent } from './routes/settings/settings.component';
 import { CarDetailComponent } from './routes/car-detail/car-detail.component';
 import { CarListComponent } from './routes/car-list/car-list.component';
 import { CarMaintComponent } from './routes/car-maint/car-maint.component';
+import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CarMaintComponent } from './routes/car-maint/car-maint.component';
     SettingsComponent,
     CarDetailComponent,
     CarListComponent,
-    CarMaintComponent
+    CarMaintComponent,
+    AuthenticatedComponent
   ],
   imports: [
     BrowserModule,
