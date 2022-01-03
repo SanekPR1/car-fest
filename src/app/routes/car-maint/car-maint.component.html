@@ -1,1 +1,34 @@
-<p>car-maint works!</p>
+<h3>Car maintenence</h3>
+<button class="btn btn-primary" (click)='createCar()'>Add new car</button>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="row">
+            <th class='col-lg-3 col-sm-3 col-3'>Car Name</th>
+            <th class='col-lg-3 col-sm-3 col-3'>Car model</th>
+            <th class='col-lg-2 col-sm-2 col-3'>Price</th>
+            <th class='col-lg-4 col-sm-4 col-3'></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row" *ngFor="let item of carList">
+            <td class='col-lg-3 col-sm-3 col-3'>{{item.name}}</td>
+            <td class='col-lg-3 col-sm-3 col-3'>{{item.model}}</td>
+            <td class='col-lg-2 col-sm-2 col-3'>{{item.price}}</td>
+            <td class='col-lg-4 col-sm-4 col-3' *ngIf="item.id != deleteId">
+                <button class="btn btn-sm btn-primary" (click)="showCarDetail(item.id)">Details</button>
+                <button class="btn btn-sm btn-warning" (click)="editCar(item.id)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteCarQuestion(item.id)">Delete</button>
+            </td>
+            <td class='col-lg-4 col-sm-4 col-3' *ngIf="item.id === deleteId && !isDeleting">
+                <button class="btn btn-sm btn-light" (click)="cancelDelete()">Cancel</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteCar(item.id)">Delete</button>
+                Delete this car?
+                <p *ngIf="deleteError">{{deleteError}}</p>
+            </td>
+            <td class='col-lg-4 col-sm-4 col-3' *ngIf="item.id === deleteId && isDeleting">
+                Deleting ...
+                <img src="./imgs/deleteLoader.gif">
+            </td>
+        </tr>
+    </tbody>
+</table>
