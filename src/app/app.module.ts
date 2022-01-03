@@ -15,6 +15,7 @@ import { AuthenticatedComponent } from './routes/authenticated/authenticated.com
 import { UserService } from './services/user.service';
 import { UserApi } from 'src/spa/users/users-api';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AppDataService } from './services/app-data.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     UserService,
     // to make UserService available in SPA module and its component
     { provide: UserApi, useExisting: UserService },
-    AuthGuardService
+    AuthGuardService,
+    AppDataService
   ],
   bootstrap: [AppComponent]
 })
