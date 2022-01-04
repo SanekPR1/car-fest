@@ -40,7 +40,8 @@ import { PanelComponent } from './panel/panel.component';
         DynamicFormComponent,
         PanelComponent
     ],
-    exports: [SpaBodyComponent, DynamicFormComponent, PanelComponent],
+    exports: [SpaBodyComponent, DynamicFormComponent, PanelComponent, ScreenSmallDirective,
+        ScreenLargeDirective],
     providers: [SpaConfigService, ScreenService, MenuService]
 })
 export class SpaModule { }

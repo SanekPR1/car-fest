@@ -39,7 +39,7 @@
 .title-group-small {
     display: flex;
     min-height: 40px;
-    background-color: #ddd;
+    background-color: rgb(163, 151, 151);
 }
 .index-small {
     display: flex;
