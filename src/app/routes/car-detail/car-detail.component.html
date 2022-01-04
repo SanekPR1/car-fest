@@ -1,4 +1,5 @@
 <div *ngIf="car">
     <spa-dynamic-form [vm]='car' [vmDefinition]='carDefinitionInput' [operation]='operation'
-        [errorMesssage]='errorMessage' (update)='updateCar($event)' (create)='createCar($event)'></spa-dynamic-form>
+        [errorMesssage]='errorMessage' (update)='updateCar($event)' (create)='createCar($event)'>
+    </spa-dynamic-form>
 </div>

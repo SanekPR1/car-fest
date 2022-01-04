@@ -32,4 +32,16 @@ export class AppDataService {
         return of({}).pipe(delay(2000),
             map(() => this.carsCollection.splice(this.carsCollection.findIndex(item => item.id === id), 1)));
     }
+
+    createCar(car: Car): Observable<Car> {
+        let id = 0;
+        this.carsCollection.forEach(item => {
+            if (item.id > id) {
+                id = item.id;
+            }
+        });
+        car.id = ++id;
+        this.carsCollection.push(car);
+        return of(car);
+    }
 }

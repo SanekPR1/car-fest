@@ -49,12 +49,12 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.clearForm();
     this.route.params.subscribe(params => {
       this.operation = params['operation'];
-      this.clearForm;
+      this.clearForm();
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['errorMessage'].currentValue && this.status === 'waiting') {
+    if (changes['errorMessage'] && this.status === 'waiting') {
       this.status = '';
     }
   }
