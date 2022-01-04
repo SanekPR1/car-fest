@@ -19,7 +19,7 @@ export const appRoutes: Routes = [
                     { path: 'home', component: AppHomeComponent },
                     { path: 'settings', component: SettingsComponent },
                     { path: 'car-list/:count', component: CarListComponent },
-                    { path: 'car-detail/:car/:operation', component: CarDetailComponent },
+                    { path: 'car-detail/:id/:operation', component: CarDetailComponent },
                     { path: 'car-maint', component: CarMaintComponent }
                 ]
             },

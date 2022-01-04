@@ -44,4 +44,10 @@ export class AppDataService {
         this.carsCollection.push(car);
         return of(car);
     }
+
+    updateCar(updatingCar: Car): Observable<Car> {
+        const car = this.carsCollection.find(item => item.id === updatingCar.id);
+        Object.assign(car, updatingCar);
+        return of(car).pipe(delay(1200));
+    }
 }

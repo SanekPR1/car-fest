@@ -38,14 +38,22 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
-  updateCar(event: Event) { }
+  updateCar(car: Car) {
+    this.errorMessage = null;
+    this.dataService.updateCar(car).subscribe(
+      car => this.router.navigate(['/authenticated/car-maint']),
+      error => {
+        this.errorMessage = 'Error updating car';
+      }
+    );
+  }
   createCar(car: Car) {
     car.id = 0;
     this.errorMessage = null;
     this.dataService.createCar(car).subscribe(
       car => this.router.navigate(['/authenticated/car-maint']),
       error => {
-        this.errorMessage = 'Error creating car'
+        this.errorMessage = 'Error creating car';
       }
     );
   }
