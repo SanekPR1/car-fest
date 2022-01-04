@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { UserService } from "./user.service";
 import { Car } from "./car-interface";
 import { Observable, of, throwError } from "rxjs";
-import { delay, catchError } from "rxjs/operators";
+import { delay, map, catchError } from "rxjs/operators";
 
 @Injectable()
 export class AppDataService {
@@ -25,5 +25,11 @@ export class AppDataService {
     getCar(id: number): Observable<Car> {
         const car = this.carsCollection.find(item => item.id === id);
         return of(car);
+    }
+
+    deleteCar(id: number): Observable<any> {
+
+        return of({}).pipe(delay(2000),
+            map(() => this.carsCollection.splice(this.carsCollection.findIndex(item => item.id === id), 1)));
     }
 }
