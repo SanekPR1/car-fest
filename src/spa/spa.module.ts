@@ -16,10 +16,12 @@ import { RouterModule } from '@angular/router';
 import { PopupMenuComponent } from './menus/popup-menu/popup-menu.component';
 import { RegistrationComponent } from './users/registration/registration.component';
 import { SignInComponent } from './users/sign-in/sign-in.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DynamicFieldComponent } from './dynamic-forms/dynamic-field/dynamic-field.component';
+import { DynamicFormComponent } from './dynamic-forms/dynamic-form/dynamic-form.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule],
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
     declarations: [
         SpaBodyComponent,
         SpaHeaderComponent,
@@ -32,9 +34,11 @@ import { FormsModule } from '@angular/forms';
         MenuItemComponent,
         PopupMenuComponent,
         RegistrationComponent,
-        SignInComponent
+        SignInComponent,
+        DynamicFieldComponent,
+        DynamicFormComponent
     ],
-    exports: [SpaBodyComponent],
+    exports: [SpaBodyComponent, DynamicFormComponent],
     providers: [SpaConfigService, ScreenService, MenuService]
 })
 export class SpaModule { }
