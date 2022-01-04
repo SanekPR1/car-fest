@@ -38,4 +38,6 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
+  updateCar(event: Event) { }
+  createCar(event: Event) { }
 }
