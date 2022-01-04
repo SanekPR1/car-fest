@@ -19,6 +19,7 @@ import { SignInComponent } from './users/sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicFieldComponent } from './dynamic-forms/dynamic-field/dynamic-field.component';
 import { DynamicFormComponent } from './dynamic-forms/dynamic-form/dynamic-form.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
@@ -36,9 +37,10 @@ import { DynamicFormComponent } from './dynamic-forms/dynamic-form/dynamic-form.
         RegistrationComponent,
         SignInComponent,
         DynamicFieldComponent,
-        DynamicFormComponent
+        DynamicFormComponent,
+        PanelComponent
     ],
-    exports: [SpaBodyComponent, DynamicFormComponent],
+    exports: [SpaBodyComponent, DynamicFormComponent, PanelComponent],
     providers: [SpaConfigService, ScreenService, MenuService]
 })
 export class SpaModule { }
