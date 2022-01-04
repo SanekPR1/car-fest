@@ -23,6 +23,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   status: string;
   submitted = false;
   vmCopy: any;
+  errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,9 +46,46 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.clearForm();
+    this.route.params.subscribe(params => {
+      this.operation = params['operation'];
+      this.clearForm;
+    });
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['errorMessage'].currentValue && this.status === 'waiting') {
+      this.status = '';
+    }
+  }
+  onSubmit() { }
+
+  onBack() {
+    this.errorMesssage = null;
+    this.location.back();
+  }
+
+  onEdit() {
+    this.router.navigate(['../', 'edit'], { relativeTo: this.route });
+  }
+
+  onCancel() {
+    this.onBack();
+  }
+
+  onSave() {
+    this.submitted = true;
+    if (this.form.valid) {
+      this.status = 'waiting';
+      this.update.emit(this.form.value);
+    }
+  }
+  onCreate() {
+    this.submitted = true;
+    if (this.form.valid) {
+      this.status = 'waiting';
+      this.create.emit(this.form.value);
+    }
   }
 
 }
