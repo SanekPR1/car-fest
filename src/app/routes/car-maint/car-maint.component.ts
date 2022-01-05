@@ -42,7 +42,10 @@ export class CarMaintComponent implements OnInit {
   deleteCar(id: number) {
     this.isDeleting = true;
     this.dataService.deleteCar(id).subscribe(
-      c => this.cancelDelete(),
+      c => {
+        this.cancelDelete();
+        this.carList = this.carList.filter(item => item.id !== id);
+      },
       error => {
         this.deleteError = error;
         this.isDeleting = false

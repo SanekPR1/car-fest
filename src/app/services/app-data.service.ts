@@ -2,52 +2,60 @@ import { Injectable } from "@angular/core";
 import { UserService } from "./user.service";
 import { Car } from "./car-interface";
 import { Observable, of, throwError } from "rxjs";
-import { delay, map, catchError } from "rxjs/operators";
+import { delay, map, catchError, retry } from "rxjs/operators";
+import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
 
 @Injectable()
 export class AppDataService {
-    private carsCollection: Array<Car> = [
-        { id: 1, name: "Ford", model: "Focus", price: 4500 },
-        { id: 2, name: "Mazda", model: "626", price: 900 },
-        { id: 3, name: "Chery", model: "QQ", price: 1200 },
-        { id: 4, name: "Audi", model: "Q5", price: 2200 },
-        { id: 5, name: "BMW", model: "X6", price: 14500 },
-        { id: 6, name: "Fiat", model: "Doblo", price: 2400 }
-    ];
+    private carsCollection: Array<Car>;
+    private url = 'http://localhost:3000/cars'
 
-    constructor(private userService: UserService) { }
+    constructor(
+        private userService: UserService,
+        private http: HttpClient
+    ) { }
 
 
     getCars(): Observable<Car[]> {
-        return of(this.carsCollection);
+        return this.http.get<Car[]>(this.url, { responseType: 'json' })
+            .pipe(retry(3), catchError(this.handleError)).pipe((data: any) => {
+                data.subscribe((cars: Car[]) => this.carsCollection = cars);
+                return data;
+            });
     }
 
     getCar(id: number): Observable<Car> {
-        const car = this.carsCollection.find(item => item.id === id);
-        return of(car);
+        return this.http.get<Car>(`${this.url}/${id}`, { responseType: 'json' })
+            .pipe(map((data: any) => {
+                return data;
+            }), catchError((error: HttpErrorResponse) => throwError('Server did not respond')));
     }
 
     deleteCar(id: number): Observable<any> {
-
-        return of({}).pipe(delay(2000),
-            map(() => this.carsCollection.splice(this.carsCollection.findIndex(item => item.id === id), 1)));
+        return this.http.delete(`${this.url}/${id}`).pipe(map((response) => {
+            console.log(response);
+            return response;
+        }), delay(1200));
     }
 
     createCar(car: Car): Observable<Car> {
-        let id = 0;
-        this.carsCollection.forEach(item => {
-            if (item.id > id) {
-                id = item.id;
-            }
-        });
-        car.id = ++id;
-        this.carsCollection.push(car);
-        return of(car);
+        return this.http.post<Car>(this.url, car);
     }
 
     updateCar(updatingCar: Car): Observable<Car> {
-        const car = this.carsCollection.find(item => item.id === updatingCar.id);
-        Object.assign(car, updatingCar);
-        return of(car).pipe(delay(1200));
+        return this.http.put<Car>(`${this.url}/${updatingCar.id}`, updatingCar);
+    }
+
+    handleError(error: HttpErrorResponse) {
+        let errorMessage = 'Unknown error!';
+        if (error.error instanceof ErrorEvent) {
+            // Client-side errors
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // Server-side errors
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        window.alert(errorMessage);
+        return throwError(errorMessage);
     }
 }
