@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import { Car } from "./car-interface";
 import { Observable, of, throwError } from "rxjs";
 import { delay, map, catchError, retry } from "rxjs/operators";
-import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
 export class AppDataService {

@@ -42,5 +42,13 @@
       "model": "Veyron",
       "price": 65001
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "emai": "test@gmail.com",
+      "password": "test"
+    }
   ]
 }
