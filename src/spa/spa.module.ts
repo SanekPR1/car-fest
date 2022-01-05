@@ -20,9 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicFieldComponent } from './dynamic-forms/dynamic-field/dynamic-field.component';
 import { DynamicFormComponent } from './dynamic-forms/dynamic-form/dynamic-form.component';
 import { PanelComponent } from './panel/panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule],
     declarations: [
         SpaBodyComponent,
         SpaHeaderComponent,
