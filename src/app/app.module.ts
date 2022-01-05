@@ -17,6 +17,7 @@ import { UserApi } from 'src/spa/users/users-api';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AppDataService } from './services/app-data.service';
 import { CarPanelComponent } from './panels/car-panel/car-panel.component';
+import { ImagePanelComponent } from './panels/image-panel/image-panel.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CarPanelComponent } from './panels/car-panel/car-panel.component';
     CarListComponent,
     CarMaintComponent,
     AuthenticatedComponent,
-    CarPanelComponent
+    CarPanelComponent,
+    ImagePanelComponent
   ],
   imports: [
     BrowserModule,
