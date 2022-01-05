@@ -7,8 +7,8 @@
             <div class="alert alert-danger" [hidden]='name.valid || name.pristine'>Please enter your name</div>
         </div>
         <div class="form-group">
-            <input type="email" autocomlete="off" name="email" required placeholder="User email" ngModel
-                #email='ngModel' class='form-control'>
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" autocomlete="off" name="email"
+                required placeholder="User email" ngModel #email='ngModel' class='form-control'>
             <div class="alert alert-danger" [hidden]='email.valid || email.pristine'>Please enter your email</div>
         </div>
         <div class="form-group">
