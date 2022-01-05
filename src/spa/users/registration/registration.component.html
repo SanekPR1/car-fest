@@ -1,4 +1,4 @@
-<div class="register-form" @visbility>
+<div @visibility class="register-form">
     <h4>Register for new account</h4>
     <form novalidate (ngSubmit)="onSubmit(registerForm)" #registerForm='ngForm'>
         <div class="form-group">
@@ -29,6 +29,9 @@
         </div>
         <div *ngIf="hasAdded">
             <span>New user has edded to database</span>
+        </div>
+        <div *ngIf="errorMessage">
+            <span class="text-danger">{{errorMessage}}</span>
         </div>
     </form>
 </div>

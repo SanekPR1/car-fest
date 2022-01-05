@@ -9,11 +9,9 @@ import { User } from "src/spa/users/user.interface";
 @Injectable()
 export class UserService implements UserApi {
     isAuthenticated = false;
-    dataTransfer: Array<any>;
     private url = 'http://localhost:3000/users'
 
     constructor(private router: Router, private http: HttpClient) {
-        this.dataTransfer = null;
     }
 
     signIn(email: string, password: string): Observable<User> {
@@ -22,7 +20,7 @@ export class UserService implements UserApi {
                 {
                     if (response && Object.keys(response).length !== 0) {
                         this.isAuthenticated = true;
-                        this.dataTransfer = response.name;
+                        localStorage.setItem('user', JSON.stringify(response[0]));
                         return response;
                     } else {
                         return throwError('Invalid email or password');
@@ -31,12 +29,17 @@ export class UserService implements UserApi {
             }))
     }
 
-    registerUser(registerForm: User) {
-        return this.http.post(this.url, registerForm);
+    registerUser(form: User) {
+        let user = this.http.get<User>(`${this.url}?email=${form.email}}`, { responseType: 'json' });
+        if (user) {
+            return throwError(`User with the email ${form.email} is already existed`);
+        }
+        return this.http.post(this.url, form);
     }
 
     signOut(): Observable<any> {
         this.isAuthenticated = false;
+        localStorage.clear();
         this.router.navigate(['/sign-in']);
         return of({});
     }
