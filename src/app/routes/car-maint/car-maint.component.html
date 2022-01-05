@@ -5,7 +5,7 @@
         <tr class="row">
             <th class='col-lg-3 col-sm-3 col-3'>Car Name</th>
             <th class='col-lg-3 col-sm-3 col-3'>Car model</th>
-            <th class='col-lg-2 col-sm-2 col-3'>Price</th>
+            <th class='col-lg-2 col-sm-2 col-3'>Price (USD)</th>
             <th class='col-lg-4 col-sm-4 col-3'></th>
         </tr>
     </thead>
@@ -13,7 +13,7 @@
         <tr class="row" *ngFor="let item of carList">
             <td class='col-lg-3 col-sm-3 col-3'>{{item.name}}</td>
             <td class='col-lg-3 col-sm-3 col-3'>{{item.model}}</td>
-            <td class='col-lg-2 col-sm-2 col-3'>{{item.price}}</td>
+            <td class='col-lg-2 col-sm-2 col-3'>{{item.price | currency: 'USD'}}</td>
             <td class='col-lg-4 col-sm-4 col-3' *ngIf="item.id != deleteId">
                 <button class="btn btn-sm btn-primary" (click)="showCarDetail(item.id)">Details</button>
                 <button class="btn btn-sm btn-warning" (click)="editCar(item.id)">Edit</button>
