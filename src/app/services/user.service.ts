@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { UserApi } from "src/spa/users/users-api";
 import { Router } from "@angular/router";
-import { Observable, of, throwError } from "rxjs";
-import { delay, map } from 'rxjs/operators';
+import { forkJoin, Observable, of, Subscription, throwError } from "rxjs";
+import { delay, map, timeout } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { User } from "src/spa/users/user.interface";
+import { switchMap } from "rxjs/operators";
 
 @Injectable()
 export class UserService implements UserApi {
@@ -23,18 +24,35 @@ export class UserService implements UserApi {
                         localStorage.setItem('user', JSON.stringify(response[0]));
                         return response;
                     } else {
-                        return throwError('Invalid email or password');
+                        throw new Error('Invalid email or password');
                     }
                 }
             }))
     }
 
     registerUser(form: User) {
-        let user = this.http.get<User>(`${this.url}?email=${form.email}}`, { responseType: 'json' });
-        if (user) {
-            return throwError(`User with the email ${form.email} is already existed`);
+        let isExisted: Observable<boolean>;
+        return this.http.get<User[]>(`${this.url}`, { responseType: 'json' })
+            .pipe(switchMap(response => forkJoin(
+                isExisted = this.isEmailExisted(form.email, response)))
+            ).pipe(switchMap(() => {
+                let existed: boolean
+                isExisted.subscribe(result => existed = result);
+                console.log(existed);
+                if (!existed) {
+                    return this.http.post(this.url, form);
+                } else {
+                    return throwError(`User with the email ${form.email} is already existed`);
+                }
+            }))
+    }
+
+    private isEmailExisted(email: string, users: User[]) {
+        let filteredUsers = users.filter(item => item.email === email);
+        if (filteredUsers && filteredUsers.length > 0) {
+            return of(true);
         }
-        return this.http.post(this.url, form);
+        return of(false);
     }
 
     signOut(): Observable<any> {

@@ -33,7 +33,7 @@ export class SignInComponent implements OnInit {
         .signIn(signInForm.value.email, signInForm.value.password)
         .subscribe((data) => {
           console.log(data);
-          this.router.navigate(['/authenticated']);
+          this.router.navigate(['/authenticated/home']);
         },
           (error) => {
             this.submitting = false;

@@ -40,15 +40,27 @@
       "id": 7,
       "name": "Bugatti",
       "model": "Veyron",
-      "price": 65001
+      "price": 65000
     }
   ],
   "users": [
     {
       "id": 1,
       "name": "Test User",
-      "emai": "test@gmail.com",
+      "email": "test@gmail.com",
       "password": "test"
+    },
+    {
+      "name": "Sssanek",
+      "email": "test1@gmail.com",
+      "password": "test",
+      "id": 2
+    },
+    {
+      "name": "Sssanek",
+      "email": "1test@gmail.com",
+      "password": "test",
+      "id": 3
     }
   ]
 }
