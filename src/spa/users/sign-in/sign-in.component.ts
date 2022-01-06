@@ -31,8 +31,7 @@ export class SignInComponent implements OnInit {
       this.formError = null;
       this.userApi
         .signIn(signInForm.value.email, signInForm.value.password)
-        .subscribe((data) => {
-          console.log(data);
+        .subscribe(() => {
           this.router.navigate(['/authenticated/home']);
         },
           (error) => {

@@ -31,6 +31,16 @@ export class AppDataService {
             }), catchError((error: HttpErrorResponse) => throwError('Server did not respond')));
     }
 
+    getCarByName(name: string): Observable<Car> {
+        return this.http.get<Car[]>(`${this.url}`, { responseType: 'json' })
+            .pipe(map((data: any) => {
+                let cars = data.filter((d: Car) => {
+                    return d.name.toLowerCase() === name.toLowerCase();
+                })
+                return cars[0];
+            }), catchError((error: HttpErrorResponse) => throwError('Server did not respond')));
+    }
+
     deleteCar(id: number): Observable<any> {
         return this.http.delete(`${this.url}/${id}`).pipe(map((response) => {
             console.log(response);

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FieldInput } from 'src/spa/dynamic-forms/field-interface';
 import { Car } from 'src/app/services/car-interface';
 import { AppDataService } from 'src/app/services/app-data.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { visibility } from 'src/spa/services/animations';
 
 @Component({
@@ -26,17 +26,38 @@ export class CarDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private dataService: AppDataService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.car = null;
+        this.getCarDetails();
+      }
+    });
+    this.getCarDetails();
+  }
+
+  private getCarDetails() {
     this.operation = this.route.snapshot.params['operation'];
     if (this.operation === 'create') {
       this.car = { id: 0, name: '', model: '', price: null }
     } else {
-      this.dataService.getCar(+this.route.snapshot.params['id'])
-        .subscribe((car: Car) => {
-          this.car = car;
-        });
+      let carName = this.route.snapshot.params['id'];
+      if (!isNaN(+carName)) {
+        this.dataService.getCar(+this.route.snapshot.params['id'])
+          .subscribe((car: Car) => {
+            this.car = car;
+          });
+      } else {
+        this.operation = 'details';
+        this.dataService.getCarByName(carName)
+          .subscribe((car: Car) => {
+            this.car = car;
+          });
+      }
     }
   }
 
